@@ -13,7 +13,7 @@
 <body>
     <header class="top row">
         <p class="two columns">Your Gold:</p>
-        <p class="gold two columns"><% gold %></p>
+        <p class="gold two columns"><%= gold %></p>
     </header>
     <div class="row">
         <section class="place three columns">
@@ -53,17 +53,12 @@
         <div class="one column"></div>
         <div class="scrollbox ten columns">
             <% for (var line in record) {%>
-                <% if(line.change >=0) {%>
-                    <p class="green">>Earned <% line.change %> golds from the <% line.choice %>! <% line.time %></p>
+                <% if(record[line].change >=0) {%>
+                    <p class="green">>Earned <%= record[line].change %> golds from the <%= record[line].choice %>! <%= record[line].time %></p>
                 <% } else { %>
-                    <p class="red">Entered a casino and lost <% -line.change %> golds... Ouch... <% line.time %></p>
+                    <p class="red">Entered a casino and lost <%= -1 * record[line].change %> golds... Ouch... <%= record[line].time %></p>
                 <% } %>
             <% } %>
-            <!-- <p class="green">Earned {{ record.change }} golds from the {{record.choice}}! ({{record.time}})</p> -->
-            <!-- {% for record in session['record'] %} {% if record.change >= 0 %} -->
-            <!-- {% else %}
-            <p class="red">Entered a casino and lost {{ -record.change }} golds... Ouch... ({{record.time}})</p>
-            {% endif %} {% endfor %} -->
         </div>
 
     </footer>
